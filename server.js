@@ -1,22 +1,22 @@
-const express = require('express')
 const dotenv = require('dotenv')
-const mongoose = require('mongoose');
 dotenv.config({ path: './config.env' })
+const express = require('express')
+const mongoose = require('mongoose');
 const app = express()
 const port = process.env.PORT
 const db = process.env.DATABASE
 
+app.use(express.json());
+app.use(require('./routes/index'))
+
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }).then(() => {
     console.log("MONGO DB CONNECTED");
+}).then(() => {
     app.listen(port, () => {
-        console.log(`server runnig http://localhost:${port}`)
+        console.log(`SERVER RUNNING :- http://localhost:${port}`)
     })
 }).catch((error) => {
     console.log(error)
 })
 
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
 
