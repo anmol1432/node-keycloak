@@ -1,0 +1,8 @@
+{
+  "realm": "bms",
+  "bearer-only": true,
+  "auth-server-url": "localhost://8080",
+  "ssl-required": "external",
+  "resource": "bms-backend",
+  "confidential-port": 0
+}
